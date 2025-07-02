@@ -18,6 +18,9 @@
     <!-- Custom Cursor -->
     <div class="cursor"></div>
 
+    <!-- Right-click message -->
+    <div class="right-click-message">Right-click is disabled on this page</div>
+
     <!-- Header -->
     <header>
         <a href="#home" class="logo">MP</a>
@@ -341,6 +344,19 @@
             cursor.style.left = e.clientX + 'px';
             cursor.style.top = e.clientY + 'px';
         });
+
+        // Disable right-click
+        document.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+            
+            const message = document.querySelector('.right-click-message');
+            message.classList.add('show');
+            
+            setTimeout(() => {
+                message.classList.remove('show');
+            }, 3000);
+        });
+        
 
         // Add hover effect to links and buttons
         document.querySelectorAll('a, button, .project-card').forEach(element => {
